@@ -27,12 +27,17 @@ class _TabsWebState extends State<TabsWeb> {
       },
       child: AnimatedDefaultTextStyle(
         duration: const Duration(milliseconds: 100),
+        curve: Curves.elasticIn,
         style:isSelected? GoogleFonts.oswald(
+          shadows:[Shadow(
             color: Colors.black,
+            offset: Offset(0, -1),
+          )],
+            color: Colors.transparent,
             fontSize:24.0,
           decoration: TextDecoration.underline,
           decorationThickness: 1,
-          decorationColor: Colors.black
+          decorationColor: Colors.tealAccent
         ):
        GoogleFonts.oswald(color:Colors.black,
        fontSize: 23.0,
@@ -44,3 +49,35 @@ class _TabsWebState extends State<TabsWeb> {
     );
   }
 }
+
+class SansBold extends StatelessWidget {
+  final text;
+  final size;
+  const SansBold(this.text, this.size, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: GoogleFonts.openSans(
+          fontSize: size, fontWeight:FontWeight.bold),
+    );
+  }
+}
+
+class Sans extends StatelessWidget {
+  final text;
+  final size;
+  const Sans(this.text, this.size,{super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: GoogleFonts.openSans(
+          fontSize: size),
+    );
+  }
+}
+
+
