@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../components.dart';
 class LandingPageWeb extends StatefulWidget {
@@ -13,7 +12,7 @@ class LandingPageWeb extends StatefulWidget {
 class _LandingPageWebState extends State<LandingPageWeb> {
   @override
   Widget build(BuildContext context) {
-    var heightDevise=MediaQuery.of(context).size.height;
+    var heightDevice=MediaQuery.of(context).size.height;
     return Scaffold(
       drawer: Drawer(),
       backgroundColor: Colors.white,
@@ -42,12 +41,13 @@ class _LandingPageWebState extends State<LandingPageWeb> {
         children: [
           //First page
           Container(
-          height: heightDevise-56,
+          height: heightDevice-56,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children:[
                   Container(
                     decoration: BoxDecoration(
@@ -63,6 +63,22 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                   ),
                   SizedBox(height:15.0),
                   SansBold("Catherine Kim", 55.0),
+                  Sans("Senior Digital Analytics Architect", 30),
+                  SizedBox(height: 15.0),
+                  Row(
+                    children: [
+                      Icon(Icons.email),
+                      SizedBox(width:20.0),
+                      Sans("cat.kim.fed@gmail.com", 15.0)
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Icon(Icons.location_city),
+                      SizedBox(width:20.0),
+                      Sans("Los Angeles", 15.0)
+                    ],
+                  ),
                 ]
               ),
               CircleAvatar(
@@ -80,7 +96,85 @@ class _LandingPageWebState extends State<LandingPageWeb> {
               ),
             ],
           ),
-        ),],
+        ),
+          // second page
+          Container(
+            height: heightDevice/1.5,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Image.asset('assets/web.jpg', height:heightDevice/1.7),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children:[
+                    SansBold("About Me", 40.0),
+                SizedBox(height:15),
+                    Sans("Senior Digital Analytics Architect delivering quality data collection implementations.", 15),
+                    Sans("Proficient in Adobe Launch, Tealium, and Ensighten tag managers", 15),
+                    SizedBox(height:10.0),
+                    Row(children:[
+                      Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Colors.tealAccent,
+                            style: BorderStyle.solid,
+                            width:2.0
+                          ),
+                          borderRadius: BorderRadius.circular(5.0)
+                        ),
+                        padding: EdgeInsets.all(7.0),
+                        child: Sans("Javascript", 15),
+                      ),
+                      SizedBox(width:7.0),
+                      Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                                color: Colors.tealAccent,
+                                style: BorderStyle.solid,
+                                width:2.0
+                            ),
+                            borderRadius: BorderRadius.circular(5.0)
+                        ),
+                        padding: EdgeInsets.all(7.0),
+                        child: Sans("Launch", 15),
+                      ),
+                      SizedBox(width:7.0),
+                      Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                                color: Colors.tealAccent,
+                                style: BorderStyle.solid,
+                                width:2.0
+                            ),
+                            borderRadius: BorderRadius.circular(5.0)
+                        ),
+                        padding: EdgeInsets.all(7.0),
+                        child: Sans("Adobe Analytics", 15),
+                      ),
+                      SizedBox(width:7.0),
+                      Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                                color: Colors.tealAccent,
+                                style: BorderStyle.solid,
+                                width:2.0
+                            ),
+                            borderRadius: BorderRadius.circular(5.0)
+                        ),
+                        padding: EdgeInsets.all(7.0),
+                        child: Sans("Tealium", 15),
+                      ),
+                    ]),
+
+                  ],
+                ),
+              ],
+            ),
+
+          ),
+        ],
       ),
     );
   }
