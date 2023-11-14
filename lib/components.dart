@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 
 class TabsWeb extends StatefulWidget {
@@ -50,6 +52,41 @@ class _TabsWebState extends State<TabsWeb> {
   }
 }
 
+
+class TabsMobile extends StatefulWidget {
+  final text;
+  final route;
+
+  const TabsMobile({Key? key, @required this.text, @required this.route})
+      : super(key: key);
+
+  @override
+  _TabsMobileState createState() => _TabsMobileState();
+}
+
+class _TabsMobileState extends State<TabsMobile> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialButton(
+      elevation: 20.0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(5.0),
+      ),
+      height: 50.0,
+      minWidth: 200.0,
+      color: Colors.black,
+      child: Text(
+        widget.text,
+        style: GoogleFonts.openSans(fontSize: 20.0, color: Colors.white),
+      ),
+      onPressed: () {
+        Navigator.of(context).pushNamed(widget.route);
+      },
+    );
+  }
+}
+
+
 class SansBold extends StatelessWidget {
   final text;
   final size;
@@ -79,6 +116,103 @@ class Sans extends StatelessWidget {
     );
   }
 }
+
+urlLauncher(String imgPath, String url) {
+  return IconButton(
+    icon: SvgPicture.asset(imgPath, color: Colors.black, width: 35),
+    onPressed: () async {
+      await launchUrl(Uri.parse(url));
+    },
+  );
+}
+
+class DrawersWeb extends StatelessWidget {
+  const DrawersWeb({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      backgroundColor: Colors.white,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          CircleAvatar(
+            radius: 72.0,
+            backgroundColor: Colors.tealAccent,
+            child: CircleAvatar(
+              radius: 70.0,
+              backgroundColor: Colors.white,
+              backgroundImage: AssetImage("assets/image.png"),
+            ),
+          ),
+          SizedBox(height: 15.0),
+          SansBold("Catherine Kim", 30.0),
+          SizedBox(height: 15.0),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              urlLauncher("assets/instagram.svg",
+                  "https://www.instagram.com/tomcruise/"),
+              urlLauncher(
+                  "assets/twitter.svg", "https://www.twitter.com/tomcruise"),
+              urlLauncher(
+                  "assets/github.svg", "https://github.com/sagnik150699/paulina_knop"),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class DrawersMobile extends StatelessWidget {
+  const DrawersMobile({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          DrawerHeader(
+            padding: EdgeInsets.only(bottom: 20.0),
+            child: Container(
+              decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(width: 2.0, color: Colors.black)),
+              child: Image.asset(
+                'assets/profile2-circle.png',
+                filterQuality: FilterQuality.high,
+              ),
+            ),
+          ),
+          TabsMobile(text: "Home", route: '/'),
+          SizedBox(height: 20.0),
+          TabsMobile(text: "Works", route: '/works'),
+          SizedBox(height: 20.0),
+          TabsMobile(text: "Blog", route: '/blog'),
+          SizedBox(height: 20.0),
+          TabsMobile(text: "About", route: '/about'),
+          SizedBox(height: 20.0),
+          TabsMobile(text: "Contact", route: '/contact'),
+          SizedBox(height: 40.0),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              urlLauncher("assets/instagram.svg",
+                  "https://www.instagram.com/tomcruise/"),
+              urlLauncher(
+                  "assets/twitter.svg", "https://www.twitter.com/tomcruise"),
+              urlLauncher(
+                  "assets/github.svg", "https://github.com/sagnik150699/paulina_knop"),
+            ],
+          )
+        ],
+      ),
+    );
+  }
+}
+
 
 class AnimatedCard extends StatefulWidget {
   final imagePath;
@@ -373,6 +507,24 @@ class _ContactFormMobileState extends State<ContactFormMobile> {
       ),
     );
   }
+}
+
+
+tealContainer(String text) {
+  return Container(
+    decoration: BoxDecoration(
+        border: Border.all(
+          color: Colors.tealAccent,
+          style: BorderStyle.solid,
+          width: 2.0,
+        ),
+        borderRadius: BorderRadius.circular(5.0)),
+    padding: EdgeInsets.all(7.0),
+    child: Text(
+      text,
+      style: GoogleFonts.openSans(fontSize: 15.0),
+    ),
+  );
 }
 
 
