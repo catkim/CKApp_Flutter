@@ -174,6 +174,36 @@ class _LandingPageWebState extends State<LandingPageWeb> {
             ),
 
           ),
+          // third section
+          Container(
+            height: heightDevice / 1.3,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                SansBold("What I do?", 40.0),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    AnimatedCard(
+                      imagePath: "assets/webL.png",
+                      text: "Web development",
+                    ),
+                    AnimatedCard(
+                      imagePath: "assets/app.png",
+                      text: "App development",
+                      fit: BoxFit.contain,
+                      reverse: true,
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 15.0,
+          ),
+          ContactFormWeb(),
+          SizedBox(height: 20.0),
         ],
       ),
     );
