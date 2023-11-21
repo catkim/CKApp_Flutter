@@ -6,51 +6,60 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class TabsWeb extends StatefulWidget {
   final title;
-  const TabsWeb(this.title,{super.key});
+  final route;
+
+  const TabsWeb({Key? key, this.title, this.route}) : super(key: key);
 
   @override
-  State<TabsWeb> createState() => _TabsWebState();
+  _TabsWebState createState() => _TabsWebState();
 }
 
 class _TabsWebState extends State<TabsWeb> {
   bool isSelected = false;
+
   @override
   Widget build(BuildContext context) {
-    return MouseRegion(
-      onEnter:(_){
-        setState(() {
-          isSelected=true;
-        });
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).pushNamed(widget.route);
       },
-      onExit: (_){
-       setState(() {
-         isSelected=false;
-       });
-      },
-      child: AnimatedDefaultTextStyle(
-        duration: const Duration(milliseconds: 100),
-        curve: Curves.elasticIn,
-        style:isSelected? GoogleFonts.oswald(
-          shadows:[Shadow(
-            color: Colors.black,
-            offset: Offset(0, -1),
-          )],
-            color: Colors.transparent,
-            fontSize:24.0,
-          decoration: TextDecoration.underline,
-          decorationThickness: 1,
-          decorationColor: Colors.tealAccent
-        ):
-       GoogleFonts.oswald(color:Colors.black,
-       fontSize: 23.0,
-       ),
-        child: Text(
-            widget.title,
+      child: MouseRegion(
+        onEnter: (_) {
+          setState(() {
+            isSelected = true;
+          });
+          // print("Entered");
+        },
+        onExit: (_) {
+          setState(() {
+            isSelected = false;
+          });
+          // print("Exit");
+        },
+        child: AnimatedDefaultTextStyle(
+          duration: const Duration(milliseconds: 100),
+          curve: Curves.elasticIn,
+          style: isSelected
+              ? GoogleFonts.roboto(
+              shadows: [
+                Shadow(
+                  color: Colors.black,
+                  offset: Offset(0, -1),
+                ),
+              ],
+              fontSize: 20.0,
+              color: Colors.transparent,
+              decoration: TextDecoration.underline,
+              decorationThickness: 2,
+              decorationColor: Colors.tealAccent)
+              : GoogleFonts.roboto(color: Colors.black, fontSize: 20.0),
+          child: Text(widget.title),
         ),
       ),
     );
   }
 }
+
 
 
 class TabsMobile extends StatefulWidget {
@@ -86,6 +95,50 @@ class _TabsMobileState extends State<TabsMobile> {
   }
 }
 
+class TabsWebList extends StatefulWidget {
+  const TabsWebList({Key? key}) : super(key: key);
+
+  @override
+  State<TabsWebList> createState() => _TabsWebListState();
+}
+
+class _TabsWebListState extends State<TabsWebList> {
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Spacer(
+          flex: 3,
+        ),
+        TabsWeb(
+          title: "Home",
+          route: '/',
+        ),
+        Spacer(),
+        TabsWeb(
+          title: "Works",
+          route: '/works',
+        ),
+        Spacer(),
+        TabsWeb(
+          title: "Blog",
+          route: '/blog',
+        ),
+        Spacer(),
+        TabsWeb(
+          title: "About",
+          route: '/about',
+        ),
+        Spacer(),
+        TabsWeb(
+          title: 'Contact',
+          route: '/contact',
+        ),
+        Spacer()
+      ],
+    );
+  }
+}
 
 class SansBold extends StatelessWidget {
   final text;
@@ -181,7 +234,7 @@ class DrawersMobile extends StatelessWidget {
                   shape: BoxShape.circle,
                   border: Border.all(width: 2.0, color: Colors.black)),
               child: Image.asset(
-                'assets/profile2-circle.png',
+                'assets/me2023cropped.jpg',
                 filterQuality: FilterQuality.high,
               ),
             ),
@@ -502,7 +555,19 @@ class _ContactFormMobileState extends State<ContactFormMobile> {
               }
             },
           ),
-
+          MaterialButton(
+            onPressed: ()  {
+              print('pressed');
+            },
+            elevation: 20.0,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0)),
+            height: 60.0,
+            minWidth: widthDevice / 2.2,
+            color: Colors.tealAccent,
+            child: SansBold("Submit", 20.0),
+          ),
+          SizedBox(height: 10.0)
         ],
       ),
     );

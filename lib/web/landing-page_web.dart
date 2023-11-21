@@ -23,19 +23,7 @@ class _LandingPageWebState extends State<LandingPageWeb> {
           size:25.0,
           color: Colors.black,
         ),
-        title: Row(
-          children: [
-            Spacer(flex: 3),
-            TabsWeb("Home"),
-            Spacer(),
-            TabsWeb("About"),
-            Spacer(),
-            TabsWeb("Blog"),
-            Spacer(),
-            TabsWeb("Contact"),
-            Spacer(),
-          ],
-        ),
+        title: TabsWebList(),
       ),
       body: ListView(
         children: [
