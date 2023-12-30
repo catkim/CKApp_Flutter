@@ -195,7 +195,7 @@ class DrawersWeb extends StatelessWidget {
             child: CircleAvatar(
               radius: 70.0,
               backgroundColor: Colors.white,
-              backgroundImage: AssetImage("assets/image.png"),
+              backgroundImage: AssetImage("assets/atBeach.jpg"),
             ),
           ),
           SizedBox(height: 15.0),
@@ -204,12 +204,12 @@ class DrawersWeb extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              urlLauncher("assets/instagram.svg",
-                  "https://www.instagram.com/tomcruise/"),
+              urlLauncher("assets/linkedin.svg",
+                  "https://www.linkedin.com/in/catherine-kim-12b5921"),
               urlLauncher(
-                  "assets/twitter.svg", "https://www.twitter.com/tomcruise"),
+                  "assets/twitter.svg", "https://twitter.com/cat_kim"),
               urlLauncher(
-                  "assets/github.svg", "https://github.com/sagnik150699/paulina_knop"),
+                  "assets/github.svg", "https://github.com/catkim"),
             ],
           ),
         ],
@@ -252,12 +252,12 @@ class DrawersMobile extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              urlLauncher("assets/instagram.svg",
-                  "https://www.instagram.com/tomcruise/"),
+              urlLauncher("assets/linkedin.svg",
+                  "https://www.linkedin.com/in/catherine-kim-12b5921"),
               urlLauncher(
-                  "assets/twitter.svg", "https://www.twitter.com/tomcruise"),
+                  "assets/twitter.svg", "https://twitter.com/cat_kim"),
               urlLauncher(
-                  "assets/github.svg", "https://github.com/sagnik150699/paulina_knop"),
+                  "assets/github.svg", "https://github.com/catkim"),
             ],
           )
         ],

@@ -1,9 +1,6 @@
-// ignore_for_file: prefer_const_constructors
-
-
-
 import 'package:flutter/material.dart';
-
+import 'package:url_strategy/url_strategy.dart';
+import 'routes.dart';
 import 'mobile/landing-page_mobile.dart';
 import 'web/landing-page_web.dart';
 
@@ -17,15 +14,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: LayoutBuilder(
-        builder: (context, constraints){
-          if(constraints.maxWidth > 800){
-            return LandingPageWeb();
-          }else{
-            return LandingPageMobile(context);
-          }
-        },
-      ),
+      initialRoute: '/',
+      onGenerateRoute: (settings) => RouteGenerator.generateRoute(settings),
     );
   }
 }
