@@ -397,10 +397,6 @@ class TextForm extends StatelessWidget {
   }
 }
 
-
-
-
-
 class ContactFormWeb extends StatefulWidget {
   const ContactFormWeb({Key? key}) : super(key: key);
 
@@ -574,7 +570,6 @@ class _ContactFormMobileState extends State<ContactFormMobile> {
   }
 }
 
-
 tealContainer(String text) {
   return Container(
     decoration: BoxDecoration(
@@ -591,5 +586,23 @@ tealContainer(String text) {
     ),
   );
 }
+
+class AbelCustom extends StatelessWidget {
+  final text;
+  final size;
+  final color;
+  final fontWeight;
+  const AbelCustom({@required this.text, @required this.size, this.color, this.fontWeight, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(text, style: GoogleFonts.abel(
+      fontSize: size,
+      color: color ==null? Colors.black: color,
+      fontWeight: fontWeight ==null? FontWeight.normal:fontWeight,
+    ));
+  }
+}
+
 
 
